@@ -1,3 +1,4 @@
+
 /* Highest priority: force .header-wrap horizontal flex on desktop */
 @media (min-width: 992px) {
   body .main-wrapper .section .header-bottom-section .container > .header-wrap {
@@ -910,18 +911,20 @@ textarea:-ms-input-placeholder {
 /*  2.1 - Header Top CSS
 /*----------------------------------------*/
 .header-section {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
   width: 100%;
   z-index: 999;
   margin: 0;
   padding: 0;
+}
 .header-section .header-logo img {
   max-height: 60px;
   width: auto;
   transition: all 0.3s ease;
 }
+
 .header-top-section {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -2204,11 +2207,7 @@ textarea:-ms-input-placeholder {
       padding-bottom: 10px !important;
     }
     
-    /* Adjust hero section spacing */
-    .edubin-slider-section-03 {
-      margin-top: 80px !important;  /* Push slider down below header */
-      padding-top: 0 !important;
-    }
+   
     
     .hero-slide-item {
       margin-top: 0 !important;
@@ -2229,9 +2228,6 @@ textarea:-ms-input-placeholder {
     body, .header-section, .main-wrapper {
         margin-top: 0 !important;
         padding-top: 0 !important;
-    }
-    .header-section {
-        margin-bottom: 0 !important;
     }
 }
   
@@ -3252,9 +3248,9 @@ textarea:-ms-input-placeholder {
   background-position: center center;
   background-size: cover;
   padding: 40px 20px;
-  padding-bottom: 120px;
   z-index: 1;
 }
+
 .edubin-slider-section-03 .slider-cont {
   position: relative;
   z-index: 5;
@@ -13346,8 +13342,8 @@ textarea:-ms-input-placeholder {
 .alumni-acknowledgement-section {
   background-color: #ffffff;
   padding: 80px 0px 50px;
-  margin-top: 120px;    /* space above */
-  margin-bottom: 120px; /* space below */
+  margin-top: 50px;    /* space above */
+  margin-bottom: 50px; /* space below */
 }
 
 .alumni-acknowledgement-section .section-title {
@@ -13875,7 +13871,7 @@ textarea:-ms-input-placeholder {
 }
 /* Professional margin below View All Programs button */
 .course-btn {
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 }
 .course-section {
   margin-bottom: 0;
@@ -13888,6 +13884,44 @@ textarea:-ms-input-placeholder {
 .edubin-blog-section {
   margin-bottom: 60px;
 }
+
+/* =============================
+   DWU 30th Anniversary Section Styles
+   (moved from index.html inline styles)
+   ============================= */
+.anniversary-section .container{
+  background-color: #ffffff;
+}
+.anniversary-logo.text-center {
+  text-align: center;
+  margin-top: 150px;
+}
+.anniversary-content .section-title {
+  color: #050505;
+}
+.anniversary-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #666;
+  text-align: justify;
+  margin-top: 20px;
+}
+.anniversary-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+  color: #ffc600;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.anniversary-link:hover {
+  text-decoration: underline !important;
+}
+.anniversary-link i {
+  margin-left: 10px;
+}
+
 /* Professional bottom margin for anniversary logo */
 .anniversary-logo {
   margin-bottom: 60px;
@@ -13898,7 +13932,7 @@ textarea:-ms-input-placeholder {
 }
 /* Professional bottom margin for anniversary content */
 .anniversary-content {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 /* Add bottom margin to countdown section for spacing */
 .countdown-section {
@@ -13909,9 +13943,7 @@ textarea:-ms-input-placeholder {
   color: #222 !important;
   transition: color 0.2s;
 }
-.footer-social-icon:hover i {
-  color: #fff !important;
-}
+
 /* Underline footer links on hover */
 .footer-link-hover:hover {
   text-decoration: underline !important;
@@ -13927,8 +13959,7 @@ textarea:-ms-input-placeholder {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-
-.anniversary-circle-img {
+/*.anniversary-circle-img {
   width: 250px;
   height: 250px;
   border-radius: 50%;
@@ -13938,8 +13969,10 @@ textarea:-ms-input-placeholder {
   margin: 0 auto;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-
-
+*/
+.footer-social-icon:hover i {
+  color: #fff !important;
+}
 
 
 /*-------------------------------------------------*/
@@ -13947,6 +13980,7 @@ textarea:-ms-input-placeholder {
 /*-------------------------------------------------*/
 .about-sp{
      padding: 0px 30px;
+     margin-bottom: 95px;
 }
  .ed-advan ul{
    display: flex;
@@ -13964,7 +13998,7 @@ textarea:-ms-input-placeholder {
    border-bottom: 1px solid #dcdbdb;
    border-right: 1px solid #dcdbdb;
 }
- .ed-advan ul li:nth-child(1){
+ /*.ed-advan ul li:nth-child(1){
      border-bottom: 1px solid #dcdbdb;
      border-right: 1px solid #dcdbdb;
 }
@@ -13982,7 +14016,7 @@ textarea:-ms-input-placeholder {
      border-right: 1px solid #dcdbdb;
 }
  .ed-advan ul li:nth-child(6){
-}
+}*/
  .ed-ad-img{
   width: auto;
   margin-right: 15px;
@@ -14021,7 +14055,7 @@ textarea:-ms-input-placeholder {
  /*-------------------------------------------------*/
 /* ABOUT US PAGE COMMON CSS
 /*-------------------------------------------------*/
- /*@media (max-width: 767px) {
+ @media (max-width: 767px) {
   .ed-advan ul li {
     width: 100%;
     float: none;
@@ -14040,7 +14074,7 @@ textarea:-ms-input-placeholder {
   display: flex;
   align-items: flex-start;
   /* ...existing styles... */
-/*}
+}
 .ed-ad-img {
   float: none;
   width: auto;
@@ -14052,8 +14086,8 @@ textarea:-ms-input-placeholder {
 }
 .ed-ad-dec p {
   margin-bottom: 15px; /* or your preferred value */
-/*}*/
-/*.ed-advan ul li {
+}
+.ed-advan ul li {
   border-bottom: 1px solid #dcdbdb;
   border-right: 1px solid #dcdbdb;
 }
@@ -14068,12 +14102,17 @@ textarea:-ms-input-placeholder {
   content: "";
   display: table;
   clear: both;
-}*/
-
+}
+/*-------------------------------------------------*/
+/* ABOUT US DESKTOP VIEW CSS
+/*-------------------------------------------------*/
 .main-wrapper, .ed-advan {
   margin-top: 80px; /* Adjust to match your header height */
 }
 
+.ed-about-tit {
+  margin-top: 120px !important; /* Adjust to match your header height */
+}
 
 /* Center the about page title and description */
 .con-title {
