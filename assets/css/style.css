@@ -2235,6 +2235,21 @@ textarea:-ms-input-placeholder {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
+    
+    .header-bottom-section {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .header-wrap {
+        min-height: 60px !important;
+        padding: 8px 0 !important;
+    }
+    
+    .header-section {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
 }
   
   /* --------------MOBILE HAMBURGER MENU BUTTON START HERE -----------*/
@@ -3602,9 +3617,9 @@ textarea:-ms-input-placeholder {
 
 .hero-slide-item {
   position: relative;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -3635,17 +3650,20 @@ textarea:-ms-input-placeholder {
     min-height: 350px !important;
     height: 400px !important;
     padding: 20px 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  .slider-statistics {
-    display: none !important;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f8f9fa; /* Add a background color for any empty space */
   }
 }
 
 @media only screen and (max-width: 991px) {
   .hero-slide-item {
     min-height: 500px;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f8f9fa; /* Add a background color for any empty space */
   }
 }
 
