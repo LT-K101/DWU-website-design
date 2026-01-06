@@ -1118,6 +1118,12 @@ textarea:-ms-input-placeholder {
 .mm-pos ul li a {
   position: relative;
 }
+
+/* Force black font color on hover for mega menu sub-menu links */
+.mm-pos ul li:hover > a,
+.mm-pos ul li a:hover {
+  color: #121212 !important;
+}
 .mm-pos ul li a:after {
     content: "";
     position: absolute;
