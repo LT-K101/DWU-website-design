@@ -560,7 +560,7 @@
                 <div class="swiper-wrapper">
                     <!-- Slide 1 -->
                     <div class="swiper-slide">
-                        <div class="hero-slide-item" style="background-image: url(assets/images/slider/s-1.jpg)">
+                        <div class="hero-slide-item" style="background-image: url(assets/images/slider/s-1.jpg);">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-8">
@@ -689,6 +689,27 @@
     </div>
     <!-- Main Wrapper End Here -->
     
+    <!-- Mobile-specific styles to remove space above slider -->
+    <style>
+        @media (max-width: 991px) {
+            .edubin-slider-section-03 {
+                padding-top: 0 !important;
+                margin-top: 0 !important;
+            }
+            .hero-slider-active {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+            .hero-slider-active .swiper-container {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+            .swiper-wrapper, .swiper-slide {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+        }
+    </style>
 
       <!-- 30th Anniversary Section Start -->
         <div class="section anniversary-section">
@@ -1148,21 +1169,21 @@
                                             <img src="assets/images/test/testi-1.png" alt="2" class="img-fluid">
                                             <div class="name_position">
                                                 <span class="name">Jerry Leluman</span>
-                                                <span>MSC Student</span>
+                                                <span style="display: inline-block; position: relative; border: 2px solid lime !important; padding: 5px !important; margin: 5px 0 !important;">MSC Student</span>
                                             </div>
                                         </div>
                                         <div class="restimonial_single_img">
                                             <img src="assets/images/test/testi-2.png" alt="2" class="img-fluid ">
                                             <div class="name_position">
                                                 <span class="name">Mason Jr.</span>
-                                                <span>MBBS Student</span>
+                                                <span style="display: inline-block; position: relative; border: 2px solid lime !important; padding: 5px !important; margin: 5px 0 !important;">MBBS Student</span>
                                             </div>
                                         </div>
                                         <div class="restimonial_single_img ">
                                             <img src="assets/images/test/testi-3.png" alt="2" class="img-fluid">
                                             <div class="name_position">
                                                 <span class="name">Blessina Korowi</span>
-                                                <span>Tourism Student</span>
+                                                <span style="display: inline-block; position: relative; border: 2px solid lime !important; padding: 5px !important; margin: 5px 0 !important;">Tourism Student</span>
                                             </div>
                                         </div>
                                     </div>

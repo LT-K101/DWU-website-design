@@ -185,15 +185,95 @@
     }
     @media #{$large-mobile} {
         height: 720px;
-
+        
         & .slider-content {
+            outline: 2px solid #00FF00; /* Green outline for slider content */
+            position: relative;
+            
+            &::after {
+                content: 'SLIDER CONTENT';
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: rgba(0, 255, 0, 0.7);
+                color: white;
+                padding: 2px 5px;
+                font-size: 12px;
+                z-index: 1000;
+            }
     
             & .title {
                 font-size: 36px;
+                outline: 2px solid #0000FF; /* Blue outline for title */
+                position: relative;
+                padding: 5px;
+                
+                &::after {
+                    content: 'TITLE';
+                    position: absolute;
+                    top: -15px;
+                    left: 0;
+                    background: rgba(0, 0, 255, 0.7);
+                    color: white;
+                    padding: 2px 5px;
+                    font-size: 10px;
+                    z-index: 1000;
+                }
             }
 
             & p {
                 padding-right: 0;
+                outline: 2px solid #FF00FF; /* Magenta outline for paragraph */
+                position: relative;
+                padding: 5px;
+                
+                &::after {
+                    content: 'PARAGRAPH';
+                    position: absolute;
+                    top: -15px;
+                    left: 0;
+                    background: rgba(255, 0, 255, 0.7);
+                    color: white;
+                    padding: 2px 5px;
+                    font-size: 10px;
+                    z-index: 1000;
+                }
+            }
+            
+            & .hero-btn {
+                outline: 2px solid #FFFF00; /* Yellow outline for button container */
+                position: relative;
+                padding: 5px;
+                
+                &::after {
+                    content: 'BUTTON CONTAINER';
+                    position: absolute;
+                    top: -15px;
+                    left: 0;
+                    background: rgba(255, 255, 0, 0.7);
+                    color: black;
+                    padding: 2px 5px;
+                    font-size: 10px;
+                    z-index: 1000;
+                }
+                
+                & ul {
+                    outline: 2px solid #00FFFF; /* Cyan outline for button list */
+                    position: relative;
+                    padding: 5px;
+                    
+                    &::after {
+                        content: 'BUTTON LIST';
+                        position: absolute;
+                        top: -15px;
+                        left: 0;
+                        background: rgba(0, 255, 255, 0.7);
+                        color: black;
+                        padding: 2px 5px;
+                        font-size: 10px;
+                        z-index: 1000;
+                    }
+                }
             }
     
         }
