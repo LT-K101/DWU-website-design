@@ -921,18 +921,20 @@ textarea:-ms-input-placeholder {
 /*  2.1 - Header Top CSS
 /*----------------------------------------*/
 .header-section {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
   width: 100%;
   z-index: 999;
   margin: 0;
   padding: 0;
+}
 .header-section .header-logo img {
   max-height: 60px;
   width: auto;
   transition: all 0.3s ease;
 }
+
 .header-top-section {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -1125,6 +1127,12 @@ textarea:-ms-input-placeholder {
 /* Orange underline only for mega menu list links, not images or buttons */
 .mm-pos ul li a {
   position: relative;
+}
+
+/* Force black font color on hover for mega menu sub-menu links */
+.mm-pos ul li:hover > a,
+.mm-pos ul li a:hover {
+  color: #121212 !important;
 }
 .mm-pos ul li a:after {
     content: "";
@@ -2404,11 +2412,7 @@ body.menu-open {
       padding-bottom: 10px !important;
     }
     
-    /* Adjust hero section spacing */
-    .edubin-slider-section-03 {
-      margin-top: 80px !important;  /* Push slider down below header */
-      padding-top: 0 !important;
-    }
+   
     
     .hero-slide-item {
       margin-top: 0 !important;
@@ -2430,8 +2434,20 @@ body.menu-open {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
+    
+    .header-bottom-section {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .header-wrap {
+        min-height: 60px !important;
+        padding: 8px 0 !important;
+    }
+    
     .header-section {
-        margin-bottom: 0 !important;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
     }
 }
   
@@ -3724,9 +3740,9 @@ body.menu-open {
   background-position: center center;
   background-size: cover;
   padding: 40px 20px;
-  padding-bottom: 120px;
   z-index: 1;
 }
+
 .edubin-slider-section-03 .slider-cont {
   position: relative;
   z-index: 5;
@@ -4073,9 +4089,9 @@ body.menu-open {
 
 .hero-slide-item {
   position: relative;
-  background-repeat: no-repeat;
-  background-position: center top;  /* Changed from center center to center top so that image move down*/
-  background-size: 100% auto;       /* Changed from cover to 100% auto to fit in screen*/
+  background-repeat: no-repeat !important;
+  background-position: center top !important;  /* Center top for better image positioning */
+  background-size: cover !important;
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -4107,17 +4123,20 @@ body.menu-open {
     min-height: 350px !important;
     height: 400px !important;
     padding: 20px 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  .slider-statistics {
-    display: none !important;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f8f9fa; /* Add a background color for any empty space */
   }
 }
 
 @media only screen and (max-width: 991px) {
   .hero-slide-item {
     min-height: 500px;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f8f9fa; /* Add a background color for any empty space */
   }
 }
 
