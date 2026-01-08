@@ -11488,6 +11488,74 @@ body.menu-open {
 }
 
 /* Responsive Edubin Tabs Menu: wrap and center on mobile/tablet */
+/* Slider Styles */
+/* Slider background images */
+.hero-slide-item {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.slide-1 {
+  background-image: url(../images/slider/s-1.jpg);
+}
+
+.slide-2 {
+  background-image: url(../images/slider/s-2.jpg);
+}
+
+.slide-3 {
+  background-image: url(../images/slider/s-3.jpg);
+}
+
+.slide-4 {
+  background-image: url(../images/slider/s-4.jpg);
+}
+
+.slide-5 {
+  background-image: url(../images/slider/s-5.jpg);
+}
+
+@media (max-width: 991px) {
+  /* Remove space above slider */
+  .edubin-slider-section-03 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Adjust slider height for mobile */
+  .hero-slide-item {
+    height: 400px !important;
+  }
+  
+  /* Center and adjust text alignment for mobile */
+  .slider-content {
+    text-align: center !important;
+    padding: 20px 15px !important;
+  }
+  
+  /* Adjust heading size for mobile */
+  .slider-content h1 {
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Adjust button styles for mobile */
+  .slider-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Adjust statistics display for mobile */
+  .slider-statistics {
+    margin-top: 15px !important;
+    padding: 0 5px !important;
+  }
+}
+
+/* Original styles continue below */
 @media (max-width: 1200px) {
   .edubin-tabs-menu {
     display: flex;
