@@ -944,8 +944,31 @@
 	}
 
 }
-/* Mobile Styles for Hero Slider */
+/* Mobile Styles for Page Banner */
 @media only screen and (max-width: 767px) {
+  /* Add darker overlay for better text visibility on mobile */
+  .page-banner-wrap {
+    position: relative;
+    padding: 20px 0;
+  }
+  .page-banner-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 70% black overlay for better text visibility */
+    z-index: 1;
+  }
+  .page-banner {
+    position: relative;
+    z-index: 2;
+    padding: 20px 15px;
+  }
+
+/* Mobile Styles for Hero Slider */
   /* Adjust slider title size and position for mobile */
   .edubin-slider-section-03 .slider-cont {
     position: relative;
