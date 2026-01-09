@@ -60,72 +60,100 @@
 
   /*-- MOBILE MENU TOGGLE STARTS HERE
   -----------------------------------*/
-
-  // Hamburger open/close
-  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-  const mobileNavMenu = document.getElementById('mobileNavMenu');
-  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-  const closeMenuBtn = document.getElementById('closeMenuBtn');
-
-  function openMobileMenu() {
-    mobileNavMenu.classList.add('open');
-    mobileMenuOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileMenu() {
-    mobileNavMenu.classList.remove('open');
-    mobileMenuOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  mobileMenuToggle.addEventListener('click', openMobileMenu);
-  closeMenuBtn.addEventListener('click', closeMobileMenu);
-  mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-
-  // Multi-level menu toggle
-  document.querySelectorAll('.mobile-nav-menu .submenu-heading').forEach(heading => {
-    heading.addEventListener('click', function(e) {
-      e.preventDefault();
-      const parentLi = this.closest('li');
-      parentLi.classList.toggle('open');
-    });
-  });
-
-  // Mobile menu accordion logic
-document.querySelectorAll('.mobile-nav-menu .about-menu, .mobile-nav-menu .cour-menu, .mobile-nav-menu .rese-menu, .mobile-nav-menu .lear-menu, .mobile-nav-menu .admi-menu').forEach(mainMenu => {
-  // Main menu click
-  const mainLink = mainMenu.querySelector('a.mm-arr');
-  if (mainLink) {
-    mainLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Close all other main menus
-      document.querySelectorAll('.mobile-nav-menu li.open').forEach(openLi => {
-        if (openLi !== mainMenu) openLi.classList.remove('open');
-      });
-      // Toggle this main menu
-      mainMenu.classList.toggle('open');
-    });
-  }
-
-  // Submenu-heading click
-  mainMenu.querySelectorAll('.submenu-heading').forEach(subHeading => {
-    subHeading.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Close all other submenus in this main menu
-      mainMenu.querySelectorAll('.submenu-heading.active').forEach(activeHeading => {
-        if (activeHeading !== subHeading) activeHeading.classList.remove('active');
-        if (activeHeading !== subHeading) activeHeading.nextElementSibling.style.display = 'none';
-      });
-      // Toggle this submenu
-      subHeading.classList.toggle('active');
-      const submenu = subHeading.nextElementSibling;
-      if (submenu) {
-        submenu.style.display = subHeading.classList.contains('active') ? 'block' : 'none';
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu elements
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const body = document.body;
+    
+    // Check if elements exist before adding event listeners
+    if (mobileMenuToggle && mobileNavMenu && mobileMenuOverlay) {
+      // Toggle mobile menu function
+      function toggleMobileMenu() {
+        // Toggle menu visibility
+        mobileNavMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+        
+        // Toggle body scroll
+        if (mobileNavMenu.classList.contains('active')) {
+          body.style.overflow = 'hidden';
+        } else {
+          body.style.overflow = '';
+        }
       }
-    });
+      
+      // Close menu when clicking outside
+      function closeOnOutsideClick(e) {
+        if (mobileNavMenu.classList.contains('active') && 
+            !mobileNavMenu.contains(e.target) && 
+            !mobileMenuToggle.contains(e.target)) {
+          toggleMobileMenu();
+        }
+      }
+      
+      // Event listeners
+      mobileMenuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+      
+      // Close button event listener
+      const closeMenuBtn = document.getElementById('closeMenuBtn');
+      if (closeMenuBtn) {
+        closeMenuBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          toggleMobileMenu();
+        });
+      }
+      
+      // Close when clicking on overlay or outside
+      mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+      
+      // Close when clicking on a menu link
+      mobileNavMenu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          toggleMobileMenu();
+        }
+      });
+      
+      // Handle submenu toggles
+      mobileNavMenu.addEventListener('click', function(e) {
+        const menuItem = e.target.closest('li');
+        if (!menuItem) return;
+        
+        // Handle clicks on menu items with submenus
+        if (menuItem.classList.contains('menu-item-has-children') || menuItem.querySelector('.sub-menu')) {
+          e.preventDefault();
+          const submenu = menuItem.querySelector('.sub-menu');
+          if (submenu) {
+            // Toggle submenu
+            submenu.classList.toggle('active');
+            menuItem.classList.toggle('active');
+          }
+        }
+      });
+      
+      // Close menu on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
+          toggleMobileMenu();
+        }
+      });
+      
+      // Close menu when window is resized to desktop view
+      let resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          if (window.innerWidth > 991 && mobileNavMenu.classList.contains('active')) {
+            toggleMobileMenu();
+          }
+        }, 250);
+      });
+    }
   });
-});
-
   /*-- MOBILE MENU TOGGLE ENDS HERE
   -----------------------------------*/
 

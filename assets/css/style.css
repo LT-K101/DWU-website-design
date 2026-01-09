@@ -1,4 +1,7 @@
 
+/*-- Google Font --*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto:300,400,500,700");
+
 /* Highest priority: force .header-wrap horizontal flex on desktop */
 @media (min-width: 992px) {
   body .main-wrapper .section .header-bottom-section .container > .header-wrap {
@@ -124,13 +127,19 @@
   /*----------------------------------------*/
   /*  01. Theme default CSS
 /*----------------------------------------*/
-/*-- Google Font --*/
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto:300,400,500,700");
 /*-- Common Style --*/
 *, *::after, *::before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Reset default margins and padding */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -141,10 +150,11 @@ body {
   color: #8a8a8a;
   outline: none;
   visibility: visible;
-  overflow-X: hidden;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: "";
+  margin: 0;
+  padding: 0;
 }
 body[dir=rtl] {
   text-align: right;
@@ -2112,7 +2122,153 @@ textarea:-ms-input-placeholder {
 }
 /*--------------------------------------------------------------------------------*/
 /* Mobile menu styles */
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1000;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Hide hamburger icon when menu is open */
+.mobile-menu-toggle.active {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Navigation Menu */
+.mobile-nav-menu {
+    position: fixed;
+    top: 0;
+    right: -280px;  /* Start off-screen */
+    width: auto;  /* Let content determine width */
+    max-width: 280px;  /* Maximum width */
+    min-width: 200px;  /* Minimum width */
+    height: 100%;
+    background: #fff;
+    z-index: 999;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;  /* Add padding instead of fixed width */
+}
+
+.mobile-nav-menu.active {
+    right: 0;
+}
+
+.mobile-nav-menu nav {
+    padding: 70px 0 30px;  /* Remove horizontal padding */
+    width: 100%;
+}
+
+.mobile-nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-menu > nav > ul > li {
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-nav-menu li a {
+    display: block;
+    padding: 10px 15px 10px 0;  /* Right padding for arrow */
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;  /* Prevent text wrapping */
+    position: relative;
+}
+
+.mobile-nav-menu .sub-menu {
+    display: none;
+    padding-left: 15px;
+}
+
+.mobile-nav-menu .sub-menu.active {
+    display: block;
+}
+
+.mobile-nav-menu .sub-menu li a {
+    padding: 8px 15px 8px 15px;  /* Indent submenu items */
+    font-size: 14px;
+    color: #666;
+    position: relative;
+}
+
+/* Add arrow for submenu items */
+.mobile-nav-menu .has-submenu > a::after {
+    content: '›';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.3s ease;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.mobile-nav-menu .has-submenu.open > a::after {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* Body lock when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Header right alignment for mobile */
 @media only screen and (max-width: 991px) {
+  /* Reset any potential spacing issues */
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .header-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
   /* Keep desktop menu hidden on mobile */
   .header-menu {
     display: none !important;
@@ -2180,13 +2336,56 @@ textarea:-ms-input-placeholder {
     display: block;
   }*/
   
-  /* Mobile menu container */
-  .header-menu-mobile {
-    display: block !important;
-    width: auto;
-    position: relative;
-    padding-left: 15px;
-    margin: 0;
+  /* Force header layout for mobile */
+  @media (max-width: 991.98px) {
+    /* Ensure header takes full width and uses flex layout */
+    .header-bottom-section .container > .header-wrap {
+      display: flex !important;
+      width: 100% !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      position: relative;
+    }
+
+    /* Position the logo on the left */
+    .header-logo {
+      flex: 0 0 auto;
+      z-index: 100;
+    }
+
+    /* Position the menu toggle on the right */
+    .header-menu-mobile {
+      display: flex !important;
+      justify-content: flex-end !important;
+      width: auto !important;
+      margin-left: auto !important;
+      padding-right: 15px !important;
+    }
+
+    /* Reset any conflicting styles on the toggle button */
+    .mobile-menu-toggle {
+      margin: 0 !important;
+      padding: 0 !important;
+      position: static !important;
+      transform: none !important;
+      right: auto !important;
+      left: auto !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Ensure header-right doesn't interfere */
+    .header-right {
+      display: contents !important;
+      width: auto !important;
+    }
   }
   /*----------------------------------------------------------------------------------*/
   
@@ -2287,13 +2486,16 @@ textarea:-ms-input-placeholder {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
   z-index: 120;
-  margin-left: auto;
+  position: relative;
+  margin: 0;
 }
 .mobile-menu-toggle span {
   display: block;
@@ -2336,15 +2538,75 @@ textarea:-ms-input-placeholder {
   display: block;
   opacity: 1;
 }
+/* Close menu button - matches hamburger icon */
 .close-menu {
-  background: none;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
   border: none;
-  font-size: 2rem;
-  color: #009959;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Show close button when menu is open */
+.mobile-nav-menu.active .close-menu {
+  opacity: 1;
+  pointer-events: auto;
+  display: flex;
+}
+
+/* Hide close button when menu is closed */
+.close-menu {
+  display: none;
+}
+
+/* Show close button when menu is active */
+.mobile-nav-menu.active + .mobile-menu-overlay + .header-menu-mobile .mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-nav-menu.active ~ .header-menu-mobile .close-menu {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Close button X lines */
+.close-menu::before,
+.close-menu::after {
+  content: '';
+  position: absolute;
+  width: 28px;  /* Slightly shorter for better proportions */
+  height: 2px;  /* Thinner line */
+  background-color: #3a7d44;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.close-menu::before {
+  transform: rotate(45deg);
+}
+
+.close-menu::after {
+  transform: rotate(-45deg);
+}
+
+/* Hover effect */
+.close-menu:hover::before,
+.close-menu:hover::after {
+  background-color: #2c5f33;
 }
 
 /* Mobile Menu List */
@@ -2407,8 +2669,14 @@ textarea:-ms-input-placeholder {
   .header-menu-mobile { display: none !important; }
 }
 @media (max-width: 991.98px) {
-  .header-menu { display: none !important; }
-  .header-menu-mobile { display: block !important; }
+  .header-menu { 
+    display: none !important; 
+  }
+  .header-menu-mobile { 
+    display: flex !important;
+    justify-content: flex-end;
+    flex: 1;
+  }
   /* Mobile menu underline hover effect */
   /* Active main menu item yellow */
   .mobile-nav-menu nav ul li.active > a,
@@ -2451,6 +2719,209 @@ textarea:-ms-input-placeholder {
 .header-search .search-btn {
   color: #009959;
   font-size: 1.5rem;
+}
+
+/* ====== Mobile Menu Fixes ====== */
+/* Ensure the header has proper spacing and alignment */
+.header-bottom-section .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 15px !important;
+    margin: 0 auto !important;
+}
+
+/* Make sure the header wrap takes full width */
+.header-wrap {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Position the hamburger menu container */
+.header-right {
+    display: flex !important;
+    justify-content: flex-end !important;
+    width: auto !important;
+    min-width: 60px; /* Ensure enough space for the button */
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative; /* Add this to contain the absolute positioned menu */
+}
+
+/* Align the hamburger menu to the right */
+.header-menu-mobile {
+    display: flex !important;
+    justify-content: flex-end !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute;
+    right: 0;
+}
+
+/* Style the hamburger menu button */
+#mobileMenuToggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid #009959;
+    border-radius: 4px;
+    margin: 0 !important;
+    padding: 10px !important;
+    cursor: pointer;
+}
+
+/* Style the hamburger icon lines */
+#mobileMenuToggle span {
+    display: block !important;
+    width: 28px;
+    height: 3px;
+    background: #009959;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* ====== Mobile Menu Ends ====== */
+
+/* Debugging styles - removed */
+
+/* Mobile menu alignment - clean and specific */
+/* Force the hamburger to the right */
+.header-bottom-section .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 15px !important;
+    margin: 0 auto !important;
+}
+
+.header-wrap {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Reset the absolute positioning */
+.header-bottom-section {
+    position: static;
+}
+
+/* Ensure the header layout is correct */
+.header-wrap {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 15px !important;
+    margin: 0 !important;
+}
+
+/* Make sure the right side container is properly aligned */
+.header-right {
+    display: flex !important;
+    justify-content: flex-end !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Position the hamburger menu container */
+.header-menu-mobile {
+    display: flex !important;
+    margin-left: auto !important;
+    padding: 0 !important;
+}
+
+/* Hamburger menu button styles */
+#mobileMenuToggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid #009959;
+    border-radius: 4px;
+    margin: 0 !important;
+    padding: 10px !important;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+#mobileMenuToggle span {
+    display: block !important;
+    width: 28px;
+    height: 3px;
+    background: #009959;
+    margin: 4px 0;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Force mobile menu alignment */
+@media (max-width: 991.98px) {
+  .header-bottom-section .container > .header-wrap {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 15px !important;
+  }
+  
+  .header-logo {
+    margin-right: auto !important;
+  }
+  
+  .header-menu-mobile {
+    margin-left: auto !important;
+    padding: 0 !important;
+  }
+  
+  /* Ensure hamburger icon is visible */
+  .mobile-menu-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .mobile-menu-toggle span {
+    display: block !important;
+    width: 28px;
+    height: 3px;
+    background: #009959; /* Green color to match your theme */
+    margin: 4px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
 }
 
 /* === Mobile Menu Dropdown Arrow Styles === */
@@ -3609,6 +4080,7 @@ textarea:-ms-input-placeholder {
     55% calc(100% - 50px),
     0 calc(100% - 50px)
   );
+  overflow: visible;
 }
 
 /*.hero-slider-active .swiper-wrapper {
@@ -3618,11 +4090,12 @@ textarea:-ms-input-placeholder {
 .hero-slide-item {
   position: relative;
   background-repeat: no-repeat !important;
-  background-position: center center !important;
+  background-position: center top !important;  /* Center top for better image positioning */
   background-size: cover !important;
   min-height: 600px;
   display: flex;
   align-items: center;
+  overflow: hidden;                /* this nsure content doesn't overflow */
 }
 
 .hero-slide-item::before {
@@ -11025,6 +11498,74 @@ padding-bottom: 20px;
 }
 
 /* Responsive Edubin Tabs Menu: wrap and center on mobile/tablet */
+/* Slider Styles */
+/* Slider background images */
+.hero-slide-item {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.slide-1 {
+  background-image: url(../images/slider/s-1.jpg);
+}
+
+.slide-2 {
+  background-image: url(../images/slider/s-2.jpg);
+}
+
+.slide-3 {
+  background-image: url(../images/slider/s-3.jpg);
+}
+
+.slide-4 {
+  background-image: url(../images/slider/s-4.jpg);
+}
+
+.slide-5 {
+  background-image: url(../images/slider/s-5.jpg);
+}
+
+@media (max-width: 991px) {
+  /* Remove space above slider */
+  .edubin-slider-section-03 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Adjust slider height for mobile */
+  .hero-slide-item {
+    height: 400px !important;
+  }
+  
+  /* Center and adjust text alignment for mobile */
+  .slider-content {
+    text-align: center !important;
+    padding: 20px 15px !important;
+  }
+  
+  /* Adjust heading size for mobile */
+  .slider-content h1 {
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Adjust button styles for mobile */
+  .slider-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Adjust statistics display for mobile */
+  .slider-statistics {
+    margin-top: 15px !important;
+    padding: 0 5px !important;
+  }
+}
+
+/* Original styles continue below */
 @media (max-width: 1200px) {
   .edubin-tabs-menu {
     display: flex;

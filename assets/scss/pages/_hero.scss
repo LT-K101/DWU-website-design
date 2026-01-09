@@ -185,15 +185,28 @@
     }
     @media #{$large-mobile} {
         height: 720px;
-
+        
         & .slider-content {
+            position: relative;
     
             & .title {
                 font-size: 36px;
+                position: relative;
+                padding: 5px;
             }
 
             & p {
-                padding-right: 0;
+                padding: 5px 0;
+            }
+            
+            & .hero-btn {
+                position: relative;
+                padding: 5px 0;
+                
+                & ul {
+                    position: relative;
+                    padding: 5px 0;
+                }
             }
     
         }
