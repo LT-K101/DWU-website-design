@@ -4139,7 +4139,17 @@ body.menu-open {
     background-color: #f8f9fa; /* Add a background color for any empty space */
   }
 }
+/*FAITH DIMENSION CSS START HERE*/
+.faith-tradition-section,
+.faith-mission-section,
+.faith-vision-section {
+margin-top: 40px;
+}
 
+.section-faith-title {
+padding-bottom: 20px;
+}
+/*FAITH DIMENSION CSS END HERE*/
 /*@media only screen and (max-width: 767px) {
   .hero-slide-item {
     min-height: 450px;
