@@ -371,7 +371,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-weight: 700;
   color: #021E40;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 50px !important;
 }
 @media only screen and (max-width: 767px) {
   .section-title .title {
@@ -386,7 +386,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-size: 18px;
   font-weight: 600;
   color: #07294d;
-  position: relative;
+  position: relative;}
   /* Removed padding-bottom to eliminate line/space under circle */
 
 
@@ -8463,10 +8463,11 @@ padding-bottom: 20px;
 /*----------------------------------------*/
 .blog-content-wrap {
   padding-top: 0px;
+  margin-top: 0px !important;
 }
 
 .single-blog {
-  margin-top: 30px;
+  margin-top: 10px;
   transition: all 0.3s ease;
 }
 .single-blog.modern-card {
@@ -14466,10 +14467,11 @@ padding-bottom: 20px;
    ============================= */
 .anniversary-section .container{
   background-color: #ffffff;
+  margin-top: 80px;
 }
 .anniversary-logo.text-center {
   text-align: center;
-  margin-top: 150px;
+ 
 }
 .anniversary-content .section-title {
   color: #050505;
@@ -14486,7 +14488,7 @@ padding-bottom: 20px;
   align-items: center;
   margin-top: 20px;
   color: #ffc600;
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
@@ -14499,11 +14501,11 @@ padding-bottom: 20px;
 
 /* Professional bottom margin for anniversary logo */
 .anniversary-logo {
-  margin-bottom: 60px;
+  margin-bottom: 70px;
 }
 /* Professional top margin for blog section */
 .edubin-blog-section {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 /* Professional bottom margin for anniversary content */
 .anniversary-content {
