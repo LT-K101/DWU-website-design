@@ -465,10 +465,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   opacity: 1;
 }
 .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: #fff;
+  background-color: #ea9c0b;
 }
 .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::after {
   transform: scale(1);
+}
+
+
+/*----------------------------------------*/
+/*  DIVINE WORD CSS
+/*----------------------------------------*/
+.faith-mission-section p {
+margin-bottom: 40px;
 }
 
 /*--  Preloader Styles  --*/
