@@ -2777,13 +2777,12 @@ body.menu-open {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
+    width: auto;
+    height: auto;
     background: transparent;
-    border: 1px solid #009959;
-    border-radius: 4px;
+    border: none;
     margin: 0 !important;
-    padding: 10px !important;
+    padding: 10px 5px !important;
     cursor: pointer;
 }
 
@@ -2860,13 +2859,12 @@ body.menu-open {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
+    width: auto;
+    height: auto;
     background: transparent;
-    border: 1px solid #009959;
-    border-radius: 4px;
+    border: none;
     margin: 0 !important;
-    padding: 10px !important;
+    padding: 10px 5px !important;
     cursor: pointer;
     position: relative;
     z-index: 1000;
